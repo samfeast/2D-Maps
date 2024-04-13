@@ -28,7 +28,7 @@ public class MapDisplay : MonoBehaviour
         textureRender.transform.localScale = new Vector3(width, 1, height);
     }
 
-    public void DrawColourMap(float[,] noiseMap, float waterLevel) {
+    public void DrawColourMap(float[,] noiseMap, float waterLevel, float beachLevel) {
         int width = noiseMap.GetLength(0);
         int height = noiseMap.GetLength(1);
 
@@ -42,6 +42,8 @@ public class MapDisplay : MonoBehaviour
 
                 if (noiseMap[x, y] < waterLevel) {
                     colourMap[y * width + x] = Color.blue;
+                } else if (noiseMap[x, y] < beachLevel) {
+                    colourMap[y * width + x] = Color.yellow;
                 } else {
                     colourMap[y * width + x] = Color.green;
                 }
