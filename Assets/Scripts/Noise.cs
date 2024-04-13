@@ -4,7 +4,11 @@ using UnityEngine;
 
 public static class Noise
 {
-    public static float[,] GenerateNoiseMap(int width, int height, float scale, int startFallOff, int endFallOff) {
+    public static float[,] MainNoiseMap(int width, int height, float scale, int startFallOff, int endFallOff, int seed) {
+        Random.InitState(seed);
+        int xOffset = (int) (Random.value * 65535);
+        int yOffset = (int)(Random.value * 65535);
+
         float[,] noiseMap = new float[width, height];
 
         (float, float) centre = ((float)width / 2, (float)height / 2);
@@ -30,8 +34,8 @@ public static class Noise
             for (int x = 0; x < width; x++) {
                 float pointValue;
 
-                float sampleX = x / scale;
-                float sampleY = y / scale;
+                float sampleX = x / scale + xOffset;
+                float sampleY = y / scale + yOffset;
 
                 float perlinValue = Mathf.PerlinNoise(sampleX, sampleY);
 
@@ -61,5 +65,19 @@ public static class Noise
     // Returns a value between 0 and 1. 1 means fulled faded (at endFallOff), 0 means not faded (at startFallOff)
     public static float fallOffFunction(float startFallOff, float endFallOff, float distToCentre) {
         return 1 - (distToCentre - startFallOff) / (endFallOff - startFallOff);
+    }
+
+    public static float[,] GenerateNoise(int width, int height, int seed) {
+        Random.InitState(seed);
+
+        float[,] noiseMap = new float[width, height];
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                noiseMap[x, y] = Random.value;
+            }
+        }
+
+        return noiseMap;
     }
 }

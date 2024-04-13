@@ -9,6 +9,8 @@ public class MapGenerator : MonoBehaviour
     public float scale;
     public int startFallOff;
     public int endFallOff;
+    public int mapSeed;
+    public int textureSeed;
 
     public bool autoUpdate;
 
@@ -18,11 +20,11 @@ public class MapGenerator : MonoBehaviour
     public float beachLevel;
 
     public void GenerateMap() {
-        float[,] noiseMap = Noise.GenerateNoiseMap(width, height, scale, startFallOff, endFallOff);
+        float[,] noiseMap = Noise.MainNoiseMap(width, height, scale, startFallOff, endFallOff, mapSeed);
 
         MapDisplay display = FindAnyObjectByType<MapDisplay>();
         if (colourMap) {
-            display.DrawColourMap(noiseMap, waterLevel, beachLevel);
+            display.DrawColourMap(noiseMap, textureSeed, waterLevel, beachLevel);
         } else {
             display.DrawNoiseMap(noiseMap);
         }
