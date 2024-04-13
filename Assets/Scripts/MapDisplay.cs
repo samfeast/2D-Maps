@@ -41,7 +41,8 @@ public class MapDisplay : MonoBehaviour
             for (int x = 0; x < width; x++) {
 
                 if (noiseMap[x, y] < waterLevel) {
-                    colourMap[y * width + x] = Color.blue;
+                    float darkness = Mathf.Max(noiseMap[x, y] / waterLevel + 0.3f, 0.3f);
+                    colourMap[y * width + x] = new Color(0f, 0f, darkness, 1);
                 } else if (noiseMap[x, y] < beachLevel) {
                     colourMap[y * width + x] = Color.yellow;
                 } else {
