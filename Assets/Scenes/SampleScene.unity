@@ -199,7 +199,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 256, y: 1, z: 256}
+  m_LocalScale: {x: 1024, y: 1, z: 1024}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -339,15 +339,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c6a984a16430946ab6af9bac50a9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 256
-  height: 256
-  scale: 27.75
-  startFallOff: 54
-  endFallOff: 207
+  width: 1024
+  height: 1024
+  scale: 39.76
+  startFallOff: 389
+  endFallOff: 526
   autoUpdate: 1
   colourMap: 1
-  waterLevel: 0.39
-  beachLevel: 0.42
+  waterLevel: 0.41
+  beachLevel: 0.45
 --- !u!4 &815598243
 Transform:
   m_ObjectHideFlags: 0
