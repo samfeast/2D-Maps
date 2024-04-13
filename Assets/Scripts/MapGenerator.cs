@@ -18,13 +18,15 @@ public class MapGenerator : MonoBehaviour
 
     public float waterLevel;
     public float beachLevel;
+    public float plainsLevel;
+    public float mountainLevel;
 
     public void GenerateMap() {
         float[,] noiseMap = Noise.MainNoiseMap(width, height, scale, startFallOff, endFallOff, mapSeed);
 
         MapDisplay display = FindAnyObjectByType<MapDisplay>();
         if (colourMap) {
-            display.DrawColourMap(noiseMap, textureSeed, waterLevel, beachLevel);
+            display.DrawColourMap(noiseMap, textureSeed, waterLevel, beachLevel, plainsLevel, mountainLevel);
         } else {
             display.DrawNoiseMap(noiseMap);
         }
