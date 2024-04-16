@@ -24,6 +24,8 @@ public class MapGenerator : MonoBehaviour
     public void GenerateMap() {
         float[,] noiseMap = Noise.MainNoiseMap(width, height, scale, startFallOff, endFallOff, mapSeed);
 
+        Biomes.BiomeMap(900, 900, 3, 3);
+
         MapDisplay display = FindAnyObjectByType<MapDisplay>();
         if (colourMap) {
             display.DrawColourMap(noiseMap, textureSeed, waterLevel, beachLevel, plainsLevel, mountainLevel);
